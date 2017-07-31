@@ -25,7 +25,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    NSArray *titleDatas = @[@"推荐视频",@"热点",@"直播",@"视频",@"娱乐",@"社会",@"头条号",@"问答",@"娱乐"];
+    NSArray *titleDatas = @[@"推荐视频",@"热点",@"直播",@"阿里巴巴",@"今日头条",@"腾讯视频"];
     self.titleDatas = titleDatas;
     JJSegmentView *segmentView = [[JJSegmentView alloc] initWithFrame:CGRectZero andDelegate:self withTitleDatas:titleDatas];
     
@@ -52,17 +52,17 @@
         cell.line.backgroundColor = [UIColor orangeColor];
         cell.titleLabel.textColor = [UIColor orangeColor];
         
-        [UIView animateWithDuration:0.3 animations:^{
-            cell.line.transform = CGAffineTransformMakeScale(1.2, 1.2);
-            cell.titleLabel.transform = CGAffineTransformMakeScale(1.2, 1.2);
-        }];
+//        [UIView animateWithDuration:0.3 animations:^{
+//            cell.line.transform = CGAffineTransformMakeScale(1.2, 1.2);
+//            cell.titleLabel.transform = CGAffineTransformMakeScale(1.2, 1.2);
+//        }];
         
     }else {
         
         cell.line.backgroundColor = [UIColor clearColor];
         cell.titleLabel.textColor = [UIColor blackColor];
-        cell.line.transform = CGAffineTransformMakeScale(1.0, 1.0);
-        cell.titleLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
+//        cell.line.transform = CGAffineTransformMakeScale(1.0, 1.0);
+//        cell.titleLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
     }
     
     return cell;

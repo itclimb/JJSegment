@@ -55,7 +55,7 @@
     [self addSubview:self.jjSegmentHead];
     [self.jjSegmentHead mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.top.trailing.mas_equalTo(self);
-        make.height.mas_equalTo(30);
+        make.height.mas_equalTo(40);
     }];
     self.jjSegmentHead.delegate = self;
     
@@ -118,10 +118,20 @@
     return self.titleDatas.count;
 }
 - (CGSize)jjSegmentItemSimeWithIndex:(NSInteger)index{
-    NSString *str = [self.titleDatas objectAtIndex:index];
-    UIFont *font = [UIFont systemFontOfSize:13];
-    CGSize size = [str sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil]];
-    return CGSizeMake(size.width + 25, 30);
+    CGFloat total = 0;
+    for (NSString *subStr in self.titleDatas) {
+        UIFont *subFont = [UIFont systemFontOfSize:17];
+        CGSize subSize = [subStr sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:subFont, NSFontAttributeName, nil]];
+        total += (subSize.width + 25);
+    }
+    if (total < [UIScreen mainScreen].bounds.size.width) {
+        return CGSizeMake([UIScreen mainScreen].bounds.size.width/self.titleDatas.count, 40);
+    }else {
+        NSString *str = [self.titleDatas objectAtIndex:index];
+        UIFont *font = [UIFont systemFontOfSize:17];
+        CGSize size = [str sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil]];
+        return CGSizeMake(size.width + 25, 40);
+    }
 }
 
 - (void)selectWithIndex:(NSInteger)index{

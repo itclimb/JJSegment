@@ -17,7 +17,7 @@
         
         self.titleLabel = [[UILabel alloc] init];
         [self.contentView addSubview:self.titleLabel];
-        self.titleLabel.font = [UIFont systemFontOfSize:13.0];
+        self.titleLabel.font = [UIFont systemFontOfSize:17];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -31,7 +31,7 @@
         
         [self.line mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.titleLabel.mas_bottom);
-            make.leading.trailing.mas_equalTo(self.titleLabel);
+            make.leading.trailing.mas_equalTo(self.contentView);
             make.height.mas_equalTo(2);
         }];
     }
