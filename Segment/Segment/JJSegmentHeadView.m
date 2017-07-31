@@ -54,28 +54,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    JJSegmentHeadViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"jjSegmentCell" forIndexPath:indexPath];
-    cell.titleLabel.text = [self.delegate textForCellWithIndex:indexPath.item];
-    
-    if (self.selectIndex == indexPath.item) {
-        
-        cell.line.backgroundColor = self.lineColor?:[UIColor orangeColor];
-        cell.titleLabel.textColor = self.titleLabelColor?:[UIColor orangeColor];
-        
-        [UIView animateWithDuration:0.3 animations:^{
-            cell.line.transform = CGAffineTransformMakeScale(1.2, 1.2);
-            cell.titleLabel.transform = CGAffineTransformMakeScale(1.2, 1.2);
-        }];
-        
-    }else {
-        
-        cell.line.backgroundColor = [UIColor clearColor];
-        cell.titleLabel.textColor = [UIColor blackColor];
-        cell.line.transform = CGAffineTransformMakeScale(1.0, 1.0);
-        cell.titleLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
-    }
-    
-    return cell;
+    return [self.delegate JJSegmentHeadView:collectionView cellForItemAtIndexPath:indexPath withSelectIndex:self.selectIndex];
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
@@ -121,37 +100,3 @@
 
 @end
 
-
-//MARK: - headView cell
-@implementation JJSegmentHeadViewCell
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    if (self = [super initWithFrame:frame]) {
-        
-        self.titleLabel = [[UILabel alloc] init];
-        [self.contentView addSubview:self.titleLabel];
-        self.titleLabel.font = [UIFont systemFontOfSize:13.0];
-        self.titleLabel.textAlignment = NSTextAlignmentCenter;
-        
-        [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.mas_equalTo(self.contentView);
-            make.top.mas_equalTo(self.contentView);
-            make.bottom.mas_equalTo(self.contentView).offset(-4);
-        }];
-        
-        self.line = [[UIView alloc] init];
-        [self.contentView addSubview:self.line];
-        
-        [self.line mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.titleLabel.mas_bottom);
-            make.leading.trailing.mas_equalTo(self.titleLabel);
-            make.height.mas_equalTo(2);
-        }];
-    }
-
-    return self;
-}
-
-
-@end

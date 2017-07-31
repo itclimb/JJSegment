@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JJSegmentHeadViewCell.h"
+@class JJSegmentHeadView;
 
 #define ScreenWidth ([[UIScreen mainScreen] bounds].size.width)
 
@@ -17,6 +19,9 @@
 - (CGSize)jjSegmentItemSimeWithIndex:(NSInteger)index;
 - (void)selectWithIndex:(NSInteger)index;
 - (NSString *)textForCellWithIndex:(NSInteger)index;
+
+//  头部标签
+- (JJSegmentHeadViewCell *)JJSegmentHeadView:(UICollectionView *)segmentHeadView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger) index;
 
 @end
 
@@ -31,13 +36,4 @@
 
 @end
 
-
-//MARK: - cell
-@interface JJSegmentHeadViewCell : UICollectionViewCell
-//  标题
-@property(nonatomic, strong) UILabel *titleLabel;
-//  底部直线
-@property(nonatomic, strong) UIView *line;
-
-@end
 

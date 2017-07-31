@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F16E8ED1F2F2797005B5378 /* JJSegmentHeadViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F16E8EC1F2F2797005B5378 /* JJSegmentHeadViewCell.m */; };
 		3F5B7D621EE7AD5900F9B21C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B7D611EE7AD5900F9B21C /* main.m */; };
 		3F5B7D651EE7AD5900F9B21C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B7D641EE7AD5900F9B21C /* AppDelegate.m */; };
 		3F5B7D6D1EE7AD5900F9B21C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F5B7D6C1EE7AD5900F9B21C /* Assets.xcassets */; };
@@ -29,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F16E8EB1F2F2797005B5378 /* JJSegmentHeadViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSegmentHeadViewCell.h; sourceTree = "<group>"; };
+		3F16E8EC1F2F2797005B5378 /* JJSegmentHeadViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSegmentHeadViewCell.m; sourceTree = "<group>"; };
 		3F5B7D5D1EE7AD5900F9B21C /* Segment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Segment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F5B7D611EE7AD5900F9B21C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3F5B7D631EE7AD5900F9B21C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -36,8 +39,8 @@
 		3F5B7D6C1EE7AD5900F9B21C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F5B7D6F1EE7AD5900F9B21C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F5B7D711EE7AD5900F9B21C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F5B7D781EE7ADAE00F9B21C /* JJSegmentBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSegmentBaseController.h; sourceTree = "<group>"; };
-		3F5B7D791EE7ADAE00F9B21C /* JJSegmentBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSegmentBaseController.m; sourceTree = "<group>"; };
+		3F5B7D781EE7ADAE00F9B21C /* JJSegmentBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJSegmentBaseController.h; path = Segment/JJSegmentBaseController.h; sourceTree = "<group>"; };
+		3F5B7D791EE7ADAE00F9B21C /* JJSegmentBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJSegmentBaseController.m; path = Segment/JJSegmentBaseController.m; sourceTree = "<group>"; };
 		3F5B7D7A1EE7ADAE00F9B21C /* JJSegmentHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSegmentHeadView.h; sourceTree = "<group>"; };
 		3F5B7D7B1EE7ADAE00F9B21C /* JJSegmentHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSegmentHeadView.m; sourceTree = "<group>"; };
 		3F5B7D7C1EE7ADAE00F9B21C /* JJSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSegmentView.h; sourceTree = "<group>"; };
@@ -105,6 +108,8 @@
 				3F5B7D841EE7AF4F00F9B21C /* Masonry */,
 				3F5B7D631EE7AD5900F9B21C /* AppDelegate.h */,
 				3F5B7D641EE7AD5900F9B21C /* AppDelegate.m */,
+				3F5B7D781EE7ADAE00F9B21C /* JJSegmentBaseController.h */,
+				3F5B7D791EE7ADAE00F9B21C /* JJSegmentBaseController.m */,
 				3F5B7D811EE7AF2200F9B21C /* JJSegmentController.h */,
 				3F5B7D821EE7AF2200F9B21C /* JJSegmentController.m */,
 				3F5B7D771EE7ADAE00F9B21C /* Segment */,
@@ -127,12 +132,12 @@
 		3F5B7D771EE7ADAE00F9B21C /* Segment */ = {
 			isa = PBXGroup;
 			children = (
-				3F5B7D781EE7ADAE00F9B21C /* JJSegmentBaseController.h */,
-				3F5B7D791EE7ADAE00F9B21C /* JJSegmentBaseController.m */,
-				3F5B7D7A1EE7ADAE00F9B21C /* JJSegmentHeadView.h */,
-				3F5B7D7B1EE7ADAE00F9B21C /* JJSegmentHeadView.m */,
 				3F5B7D7C1EE7ADAE00F9B21C /* JJSegmentView.h */,
 				3F5B7D7D1EE7ADAE00F9B21C /* JJSegmentView.m */,
+				3F5B7D7A1EE7ADAE00F9B21C /* JJSegmentHeadView.h */,
+				3F5B7D7B1EE7ADAE00F9B21C /* JJSegmentHeadView.m */,
+				3F16E8EB1F2F2797005B5378 /* JJSegmentHeadViewCell.h */,
+				3F16E8EC1F2F2797005B5378 /* JJSegmentHeadViewCell.m */,
 			);
 			path = Segment;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 				3F5B7DA11EE7AF4F00F9B21C /* MASConstraint.m in Sources */,
 				3F5B7D651EE7AD5900F9B21C /* AppDelegate.m in Sources */,
 				3F5B7DA41EE7AF4F00F9B21C /* MASViewAttribute.m in Sources */,
+				3F16E8ED1F2F2797005B5378 /* JJSegmentHeadViewCell.m in Sources */,
 				3F5B7DA71EE7AF4F00F9B21C /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				3F5B7D7E1EE7ADAE00F9B21C /* JJSegmentBaseController.m in Sources */,
 				3F5B7DA01EE7AF4F00F9B21C /* MASCompositeConstraint.m in Sources */,
@@ -408,6 +414,7 @@
 				3F5B7D761EE7AD5900F9B21C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

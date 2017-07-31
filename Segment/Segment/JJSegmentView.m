@@ -83,7 +83,7 @@
     UIView *lastView = nil;
     for (int i = 0; i < self.titleDatas.count; i++) {
         
-        UIViewController *baseVc = [self.delegate subViewControllerWithIndex:i];
+        UIViewController *baseVc = [self.delegate JJSegmentView:self subViewControllerWithIndex:i];
         [[self.delegate superViewController] addChildViewController:baseVc];
         [self.container addSubview:baseVc.view];
         [baseVc.view mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -123,7 +123,9 @@
     CGSize size = [str sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil]];
     return CGSizeMake(size.width + 25, 30);
 }
+
 - (void)selectWithIndex:(NSInteger)index{
+    
     [self.scrollBg setContentOffset:CGPointMake(ScreenWidth * index, 0) animated:NO];
     if (self.delegate && [self.delegate respondsToSelector:@selector(headTitleSelectWithIndex:)]) {
         [self.delegate headTitleSelectWithIndex:index];
@@ -133,5 +135,8 @@
     return [self.titleDatas objectAtIndex:index];
 }
 
+- (JJSegmentHeadViewCell *)JJSegmentHeadView:(UICollectionView *)segmentHeadView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index{
+    return [self.delegate JJSegmentView:segmentHeadView cellForItemAtIndexPath:indexPath withSelectIndex:index];
+}
 
 @end
