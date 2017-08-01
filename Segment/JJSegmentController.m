@@ -10,6 +10,7 @@
 #import "JJSegmentView.h"
 #import "JJSegmentBaseController.h"
 #import "Masonry.h"
+#import "JJSegmentHeadViewCell.h"
 
 @interface JJSegmentController ()<JJSegmentViewDelegate>
 
@@ -35,47 +36,38 @@
         make.leading.trailing.bottom.mas_equalTo(self.view);
     }];
     
+    [segmentView registerClass:[JJSegmentHeadViewCell class] forCellWithReuseIdentifier:@"jjSegmentCell"];
 }
 
 
 #pragma mark - JJSegmentViewDelegate
 
-- (JJSegmentHeadViewCell *)JJSegmentView:(JJSegmentView *)segmentView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index{
+- (UIViewController *)superViewController{    
+    return self;
+}
+
+- (UICollectionViewCell *)JJSegmentView:(JJSegmentView *)segmentView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index{
     
-    JJSegmentHeadViewCell *cell = [segmentView dequeueReusablecellForItemAtIndexPath:indexPath];
+    JJSegmentHeadViewCell *cell = (JJSegmentHeadViewCell *)[segmentView segmentViewDequeueReusableCellWithReuseIdentifier:@"jjSegmentCell" forIndexPath:indexPath];
 
     cell.titleLabel.text = self.titleDatas[indexPath.row];
 
     if (index == indexPath.item) {
-        
         cell.line.backgroundColor = [UIColor orangeColor];
         cell.titleLabel.textColor = [UIColor orangeColor];
-        
 //        [UIView animateWithDuration:0.3 animations:^{
 //            cell.line.transform = CGAffineTransformMakeScale(1.2, 1.2);
 //            cell.titleLabel.transform = CGAffineTransformMakeScale(1.2, 1.2);
 //        }];
-        
     }else {
-        
         cell.line.backgroundColor = [UIColor clearColor];
         cell.titleLabel.textColor = [UIColor blackColor];
 //        cell.line.transform = CGAffineTransformMakeScale(1.0, 1.0);
 //        cell.titleLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
     }
-    
     return cell;
-    
-    
 }
 
-//  指明父控制器
-- (UIViewController *)superViewController{
-    
-    return self;
-}
-
-//  导航栏index 对应的子控制器
 - (UIViewController *)JJSegmentView:(JJSegmentView *)segmentView subViewControllerWithIndex:(NSInteger)index{
     switch (index) {
 

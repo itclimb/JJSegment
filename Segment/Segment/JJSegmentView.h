@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JJSegmentHeadViewCell.h"
+//#import "JJSegmentHeadViewCell.h"
 @class JJSegmentView;
 
 @protocol JJSegmentViewDelegate <NSObject>
@@ -21,7 +21,7 @@
 - (UIViewController *)JJSegmentView:(JJSegmentView *)segmentView subViewControllerWithIndex:(NSInteger)index;
 
 //  标签栏的cell
-- (JJSegmentHeadViewCell *)JJSegmentView:(JJSegmentView *)segmentView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index;
+- (UICollectionViewCell *)JJSegmentView:(JJSegmentView *)segmentView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index;
 
 @optional
 
@@ -47,6 +47,8 @@
 
 - (instancetype)initWithFrame:(CGRect)frame andDelegate:(id)delegate withTitleDatas:(NSArray *)titleDatas;
 
-- (JJSegmentHeadViewCell *)dequeueReusablecellForItemAtIndexPath:(NSIndexPath *)indexPath;
+- (UICollectionViewCell *)segmentViewDequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;
+
+- (void)registerClass:(nullable Class)cellClass forCellWithReuseIdentifier:(NSString *_Nullable)identifier;
 
 @end

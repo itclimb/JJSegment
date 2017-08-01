@@ -145,12 +145,16 @@
     return [self.titleDatas objectAtIndex:index];
 }
 
-- (JJSegmentHeadViewCell *)JJSegmentHeadView:(UICollectionView *)segmentHeadView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index{
+- (UICollectionViewCell *)JJSegmentHeadView:(UICollectionView *)segmentHeadView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index{
     return [self.delegate JJSegmentView:self cellForItemAtIndexPath:indexPath withSelectIndex:index];
 }
 
-- (JJSegmentHeadViewCell *)dequeueReusablecellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return [self.jjSegmentHead dequeueReusablecellHeadForItemAtIndexPath:indexPath];
+- (UICollectionViewCell *)segmentViewDequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath{
+    return [self.jjSegmentHead segmentHeadViewDequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+}
+
+- (void)registerClass:(nullable Class)cellClass forCellWithReuseIdentifier:(NSString *_Nullable)identifier{
+    [self.jjSegmentHead registerClass:cellClass forCellWithReuseIdentifier:identifier];
 }
 
 @end

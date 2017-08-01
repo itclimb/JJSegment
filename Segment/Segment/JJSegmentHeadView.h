@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JJSegmentHeadViewCell.h"
+//#import "JJSegmentHeadViewCell.h"
 @class JJSegmentHeadView;
 
 #define ScreenWidth ([[UIScreen mainScreen] bounds].size.width)
@@ -21,7 +21,7 @@
 - (NSString *)textForCellWithIndex:(NSInteger)index;
 
 //  头部标签协议
-- (JJSegmentHeadViewCell *)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger) index;
+- (UICollectionViewCell *)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger) index;
 
 @end
 
@@ -34,7 +34,9 @@
 - (void)setSelectItemWithIndex:(NSInteger)index;
 - (void)reloadData;
 
-- (JJSegmentHeadViewCell *)dequeueReusablecellHeadForItemAtIndexPath:(NSIndexPath *)indexPath;
+- (UICollectionViewCell *)segmentHeadViewDequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;
+
+- (void)registerClass:(nullable Class)cellClass forCellWithReuseIdentifier:(NSString *_Nullable)identifier;
 
 @end
 

@@ -30,8 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3F16E8EB1F2F2797005B5378 /* JJSegmentHeadViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSegmentHeadViewCell.h; sourceTree = "<group>"; };
-		3F16E8EC1F2F2797005B5378 /* JJSegmentHeadViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSegmentHeadViewCell.m; sourceTree = "<group>"; };
+		3F16E8EB1F2F2797005B5378 /* JJSegmentHeadViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJSegmentHeadViewCell.h; path = Segment/JJSegmentHeadViewCell.h; sourceTree = "<group>"; };
+		3F16E8EC1F2F2797005B5378 /* JJSegmentHeadViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJSegmentHeadViewCell.m; path = Segment/JJSegmentHeadViewCell.m; sourceTree = "<group>"; };
 		3F5B7D5D1EE7AD5900F9B21C /* Segment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Segment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F5B7D611EE7AD5900F9B21C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3F5B7D631EE7AD5900F9B21C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -112,6 +112,8 @@
 				3F5B7D791EE7ADAE00F9B21C /* JJSegmentBaseController.m */,
 				3F5B7D811EE7AF2200F9B21C /* JJSegmentController.h */,
 				3F5B7D821EE7AF2200F9B21C /* JJSegmentController.m */,
+				3F16E8EB1F2F2797005B5378 /* JJSegmentHeadViewCell.h */,
+				3F16E8EC1F2F2797005B5378 /* JJSegmentHeadViewCell.m */,
 				3F5B7D771EE7ADAE00F9B21C /* Segment */,
 				3F5B7D601EE7AD5900F9B21C /* Supporting Files */,
 			);
@@ -136,8 +138,6 @@
 				3F5B7D7D1EE7ADAE00F9B21C /* JJSegmentView.m */,
 				3F5B7D7A1EE7ADAE00F9B21C /* JJSegmentHeadView.h */,
 				3F5B7D7B1EE7ADAE00F9B21C /* JJSegmentHeadView.m */,
-				3F16E8EB1F2F2797005B5378 /* JJSegmentHeadViewCell.h */,
-				3F16E8EC1F2F2797005B5378 /* JJSegmentHeadViewCell.m */,
 			);
 			path = Segment;
 			sourceTree = "<group>";

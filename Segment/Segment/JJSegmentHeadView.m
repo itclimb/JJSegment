@@ -8,6 +8,7 @@
 
 #import "JJSegmentHeadView.h"
 #import "Masonry.h"
+//#import "JJFunctionCell.h"
 
 @interface JJSegmentHeadView ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,UICollectionViewDelegate>
 
@@ -40,9 +41,13 @@
             make.edges.mas_equalTo(self);
         }];
         
-        [collectionView registerClass:[JJSegmentHeadViewCell class] forCellWithReuseIdentifier:@"jjSegmentCell"];
+        
     }
     return self;
+}
+
+- (void)registerClass:(nullable Class)cellClass forCellWithReuseIdentifier:(NSString *_Nullable)identifier{
+    [self.collectV registerClass:cellClass forCellWithReuseIdentifier:identifier];
 }
 
 
@@ -57,8 +62,9 @@
     return [self.delegate JJSegmentHeadView:self cellForItemAtIndexPath:indexPath withSelectIndex:self.selectIndex];
 }
 
-- (JJSegmentHeadViewCell *)dequeueReusablecellHeadForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return [self.collectV dequeueReusableCellWithReuseIdentifier:@"jjSegmentCell" forIndexPath:indexPath];
+- (UICollectionViewCell *)segmentHeadViewDequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath{
+    
+    return [self.collectV dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
