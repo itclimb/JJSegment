@@ -31,7 +31,7 @@
         
         [self.line mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.titleLabel.mas_bottom);
-            make.leading.trailing.mas_equalTo(self.contentView);
+            make.leading.trailing.mas_equalTo(self.titleLabel);
             make.height.mas_equalTo(2);
         }];
     }

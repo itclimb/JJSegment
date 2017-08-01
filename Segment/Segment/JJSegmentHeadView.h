@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "JJSegmentHeadViewCell.h"
 @class JJSegmentHeadView;
 
 #define ScreenWidth ([[UIScreen mainScreen] bounds].size.width)
@@ -15,28 +14,48 @@
 @protocol JJSegmentHeadViewDelegate <NSObject>
 
 @required
-- (NSInteger)jjSegmentNumber;
-- (CGSize)jjSegmentItemSimeWithIndex:(NSInteger)index;
-- (void)selectWithIndex:(NSInteger)index;
-- (NSString *)textForCellWithIndex:(NSInteger)index;
-
-//  头部标签协议
-- (UICollectionViewCell *)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger) index;
+//  标签栏标签个数
+- (NSInteger)JJSegmentNumber;
+//  标签尺寸
+- (CGSize)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView itemSimeWithIndex:(NSInteger)index;
+//  选中标签
+- (void)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView itemSelectWithIndex:(NSInteger)index;
+//  标签栏的item
+- (UICollectionViewCell *)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index;
 
 @end
 
 @interface JJSegmentHeadView : UIView
 
 @property(nonatomic, weak) id<JJSegmentHeadViewDelegate> delegate;
-@property(nonatomic, copy) UIColor *titleLabelColor;
-@property(nonatomic, copy) UIColor *lineColor;
 
+/**
+ 选中标签栏的某个cell
+
+ @param index 索引
+ */
 - (void)setSelectItemWithIndex:(NSInteger)index;
 
+/**
+ 重新加载
+ */
 - (void)reloadData;
 
+/**
+ 复用cell
+
+ @param identifier 复用标识
+ @param indexPath 复用索引
+ @return cell
+ */
 - (UICollectionViewCell *)segmentHeadViewDequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;
 
+/**
+ 注册
+
+ @param cellClass 注册类
+ @param identifier 注册标识
+ */
 - (void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier;
 
 @end

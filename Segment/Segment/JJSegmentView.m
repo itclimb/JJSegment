@@ -11,10 +11,14 @@
 #import "Masonry.h"
 
 @interface JJSegmentView()<JJSegmentHeadViewDelegate,UIScrollViewDelegate>
-
+//  标签栏
 @property(nonatomic, strong) JJSegmentHeadView *jjSegmentHead;
+//  滚动视图
 @property(nonatomic, strong) UIScrollView *scrollBg;
+//  视图容器
 @property(nonatomic, strong) UIView *container;
+//  标签栏数据
+@property(nonatomic, strong) NSArray *titleDatas;
 
 @end
 
@@ -43,15 +47,15 @@
     for (id view in self.subviews) {
         [view removeFromSuperview];
     }
-        [self.jjSegmentHead reloadData];
+    
+    [self.jjSegmentHead reloadData];
     [self createUI];
 }
 
+//MARK: - 创建子控件
 - (void)createUI{
     
     self.jjSegmentHead = [[JJSegmentHeadView alloc] init];
-    self.jjSegmentHead.titleLabelColor = self.headViewTitleLableColor;
-    self.jjSegmentHead.lineColor = self.headViewLineColor;
     [self addSubview:self.jjSegmentHead];
     [self.jjSegmentHead mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.top.trailing.mas_equalTo(self);
@@ -79,10 +83,8 @@
         make.height.mas_equalTo(scrollBg);
     }];
 
-
     UIView *lastView = nil;
     for (int i = 0; i < self.titleDatas.count; i++) {
-        
         UIViewController *baseVc = [self.delegate JJSegmentView:self subViewControllerWithIndex:i];
         [[self.delegate superViewController] addChildViewController:baseVc];
         [self.container addSubview:baseVc.view];
@@ -106,18 +108,28 @@
     }
 }
 
+- (UICollectionViewCell *)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath{
+    return [self.jjSegmentHead segmentHeadViewDequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+}
 
-//MARK: - UIScrollViewDelegate
+- (void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier{
+    [self.jjSegmentHead registerClass:cellClass forCellWithReuseIdentifier:identifier];
+}
+
+#pragma mark - UIScrollViewDelegate
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     [self.jjSegmentHead setSelectItemWithIndex:scrollView.contentOffset.x / ScreenWidth];
 }
 
 
-//MARK: - JJSegmentHeadViewDelegate
-- (NSInteger)jjSegmentNumber{
+#pragma mark -  JJSegmentHeadViewDelegate
+
+- (NSInteger)JJSegmentNumber{
     return self.titleDatas.count;
 }
-- (CGSize)jjSegmentItemSimeWithIndex:(NSInteger)index{
+
+- (CGSize)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView itemSimeWithIndex:(NSInteger)index{
     CGFloat total = 0;
     for (NSString *subStr in self.titleDatas) {
         UIFont *subFont = [UIFont systemFontOfSize:17];
@@ -134,27 +146,14 @@
     }
 }
 
-- (void)selectWithIndex:(NSInteger)index{
+- (void)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView itemSelectWithIndex:(NSInteger)index{
     
     [self.scrollBg setContentOffset:CGPointMake(ScreenWidth * index, 0) animated:NO];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(headTitleSelectWithIndex:)]) {
-        [self.delegate headTitleSelectWithIndex:index];
-    }
-}
-- (NSString *)textForCellWithIndex:(NSInteger)index{
-    return [self.titleDatas objectAtIndex:index];
+    [self.delegate JJSegmentView:self itemSelectWithIndex:index];
 }
 
 - (UICollectionViewCell *)JJSegmentHeadView:(UICollectionView *)segmentHeadView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index{
     return [self.delegate JJSegmentView:self cellForItemAtIndexPath:indexPath withSelectIndex:index];
-}
-
-- (UICollectionViewCell *)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath{
-    return [self.jjSegmentHead segmentHeadViewDequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-}
-
-- (void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier{
-    [self.jjSegmentHead registerClass:cellClass forCellWithReuseIdentifier:identifier];
 }
 
 @end

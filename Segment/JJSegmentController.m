@@ -55,15 +55,15 @@
     if (index == indexPath.item) {
         cell.line.backgroundColor = [UIColor orangeColor];
         cell.titleLabel.textColor = [UIColor orangeColor];
-//        [UIView animateWithDuration:0.3 animations:^{
-//            cell.line.transform = CGAffineTransformMakeScale(1.2, 1.2);
-//            cell.titleLabel.transform = CGAffineTransformMakeScale(1.2, 1.2);
-//        }];
+        [UIView animateWithDuration:0.3 animations:^{
+            cell.line.transform = CGAffineTransformMakeScale(1.2, 1.2);
+            cell.titleLabel.transform = CGAffineTransformMakeScale(1.2, 1.2);
+        }];
     }else {
         cell.line.backgroundColor = [UIColor clearColor];
         cell.titleLabel.textColor = [UIColor blackColor];
-//        cell.line.transform = CGAffineTransformMakeScale(1.0, 1.0);
-//        cell.titleLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        cell.line.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        cell.titleLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
     }
     return cell;
 }
@@ -90,7 +90,7 @@
     
 }
 
-- (void)headTitleSelectWithIndex:(NSInteger)index{
+- (void)JJSegmentView:(JJSegmentView *)segmentView itemSelectWithIndex:(NSInteger)index{
     
     NSLog(@"----%ld",index);
 }
