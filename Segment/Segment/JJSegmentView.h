@@ -21,11 +21,11 @@
 - (UIViewController *)JJSegmentView:(JJSegmentView *)segmentView subViewControllerWithIndex:(NSInteger)index;
 
 //  标签栏的cell
-- (JJSegmentHeadViewCell *)JJSegmentView:(UICollectionView *)segmentView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index;
+- (JJSegmentHeadViewCell *)JJSegmentView:(JJSegmentView *)segmentView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index;
 
 @optional
 
-//  点击导航栏的回调
+//  选择标签栏标签
 - (void)headTitleSelectWithIndex:(NSInteger)index;
 
 @end
@@ -47,5 +47,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame andDelegate:(id)delegate withTitleDatas:(NSArray *)titleDatas;
 
+- (JJSegmentHeadViewCell *)dequeueReusablecellForItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

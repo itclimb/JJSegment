@@ -54,7 +54,11 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    return [self.delegate JJSegmentHeadView:collectionView cellForItemAtIndexPath:indexPath withSelectIndex:self.selectIndex];
+    return [self.delegate JJSegmentHeadView:self cellForItemAtIndexPath:indexPath withSelectIndex:self.selectIndex];
+}
+
+- (JJSegmentHeadViewCell *)dequeueReusablecellHeadForItemAtIndexPath:(NSIndexPath *)indexPath{
+    return [self.collectV dequeueReusableCellWithReuseIdentifier:@"jjSegmentCell" forIndexPath:indexPath];
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout

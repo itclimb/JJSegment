@@ -40,10 +40,9 @@
 
 #pragma mark - JJSegmentViewDelegate
 
-- (JJSegmentHeadViewCell *)JJSegmentView:(UICollectionView *)segmentView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index{
+- (JJSegmentHeadViewCell *)JJSegmentView:(JJSegmentView *)segmentView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index{
     
-    JJSegmentHeadViewCell *cell = [segmentView dequeueReusableCellWithReuseIdentifier:@"jjSegmentCell" forIndexPath:indexPath];
-    cell.titleLabel.text = @"test";
+    JJSegmentHeadViewCell *cell = [segmentView dequeueReusablecellForItemAtIndexPath:indexPath];
 
     cell.titleLabel.text = self.titleDatas[indexPath.row];
 
@@ -96,7 +95,6 @@
         }
             break;
     }
-    
     
 }
 

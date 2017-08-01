@@ -20,8 +20,8 @@
 - (void)selectWithIndex:(NSInteger)index;
 - (NSString *)textForCellWithIndex:(NSInteger)index;
 
-//  头部标签
-- (JJSegmentHeadViewCell *)JJSegmentHeadView:(UICollectionView *)segmentHeadView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger) index;
+//  头部标签协议
+- (JJSegmentHeadViewCell *)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger) index;
 
 @end
 
@@ -33,6 +33,8 @@
 
 - (void)setSelectItemWithIndex:(NSInteger)index;
 - (void)reloadData;
+
+- (JJSegmentHeadViewCell *)dequeueReusablecellHeadForItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 

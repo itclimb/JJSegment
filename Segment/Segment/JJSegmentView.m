@@ -146,7 +146,11 @@
 }
 
 - (JJSegmentHeadViewCell *)JJSegmentHeadView:(UICollectionView *)segmentHeadView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index{
-    return [self.delegate JJSegmentView:segmentHeadView cellForItemAtIndexPath:indexPath withSelectIndex:index];
+    return [self.delegate JJSegmentView:self cellForItemAtIndexPath:indexPath withSelectIndex:index];
+}
+
+- (JJSegmentHeadViewCell *)dequeueReusablecellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    return [self.jjSegmentHead dequeueReusablecellHeadForItemAtIndexPath:indexPath];
 }
 
 @end
