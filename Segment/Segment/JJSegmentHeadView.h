@@ -17,7 +17,7 @@
 //  标签栏标签个数
 - (NSInteger)JJSegmentNumber;
 //  标签尺寸
-- (CGSize)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView itemSimeWithIndex:(NSInteger)index;
+- (CGSize)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView itemSizeWithIndex:(NSInteger)index;
 //  选中标签
 - (void)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView itemSelectWithIndex:(NSInteger)index;
 //  标签栏的item

@@ -49,6 +49,11 @@
     [self.collectV registerClass:cellClass forCellWithReuseIdentifier:identifier];
 }
 
+//MARK: - 复用cell
+- (UICollectionViewCell *)segmentHeadViewDequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath{
+    
+    return [self.collectV dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+}
 
 #pragma mark -  UICollectionViewDataSource
 
@@ -60,11 +65,6 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     return [self.delegate JJSegmentHeadView:self cellForItemAtIndexPath:indexPath withSelectIndex:self.selectIndex];
-}
-
-- (UICollectionViewCell *)segmentHeadViewDequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath{
-    
-    return [self.collectV dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
 }
 
 #pragma mark -  UICollectionViewDelegateFlowLayout
@@ -83,7 +83,7 @@
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    return [self.delegate JJSegmentHeadView:self itemSimeWithIndex:indexPath.row];
+    return [self.delegate JJSegmentHeadView:self itemSizeWithIndex:indexPath.row];
 }
 
 #pragma mark - UICollectionViewDelegate

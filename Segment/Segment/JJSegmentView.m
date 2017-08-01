@@ -10,6 +10,9 @@
 #import "JJSegmentHeadView.h"
 #import "Masonry.h"
 
+#define kSegmentHeadViewHeight 40
+#define kSegmentHeadTextFont 17
+
 @interface JJSegmentView()<JJSegmentHeadViewDelegate,UIScrollViewDelegate>
 //  标签栏
 @property(nonatomic, strong) JJSegmentHeadView *jjSegmentHead;
@@ -59,7 +62,7 @@
     [self addSubview:self.jjSegmentHead];
     [self.jjSegmentHead mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.top.trailing.mas_equalTo(self);
-        make.height.mas_equalTo(40);
+        make.height.mas_equalTo(kSegmentHeadViewHeight);
     }];
     self.jjSegmentHead.delegate = self;
     
@@ -129,20 +132,20 @@
     return self.titleDatas.count;
 }
 
-- (CGSize)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView itemSimeWithIndex:(NSInteger)index{
+- (CGSize)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView itemSizeWithIndex:(NSInteger)index{
     CGFloat total = 0;
     for (NSString *subStr in self.titleDatas) {
-        UIFont *subFont = [UIFont systemFontOfSize:17];
+        UIFont *subFont = [UIFont systemFontOfSize:kSegmentHeadTextFont];
         CGSize subSize = [subStr sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:subFont, NSFontAttributeName, nil]];
         total += (subSize.width + 25);
     }
     if (total < [UIScreen mainScreen].bounds.size.width) {
-        return CGSizeMake([UIScreen mainScreen].bounds.size.width/self.titleDatas.count, 40);
+        return CGSizeMake(ScreenWidth / self.titleDatas.count, kSegmentHeadViewHeight);
     }else {
         NSString *str = [self.titleDatas objectAtIndex:index];
-        UIFont *font = [UIFont systemFontOfSize:17];
+        UIFont *font = [UIFont systemFontOfSize:kSegmentHeadTextFont];
         CGSize size = [str sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil]];
-        return CGSizeMake(size.width + 25, 40);
+        return CGSizeMake(size.width + 25, kSegmentHeadViewHeight);
     }
 }
 
@@ -153,6 +156,7 @@
 }
 
 - (UICollectionViewCell *)JJSegmentHeadView:(UICollectionView *)segmentHeadView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index{
+    
     return [self.delegate JJSegmentView:self cellForItemAtIndexPath:indexPath withSelectIndex:index];
 }
 
