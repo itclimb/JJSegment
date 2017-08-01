@@ -149,11 +149,11 @@
     return [self.delegate JJSegmentView:self cellForItemAtIndexPath:indexPath withSelectIndex:index];
 }
 
-- (UICollectionViewCell *)segmentViewDequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath{
+- (UICollectionViewCell *)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath{
     return [self.jjSegmentHead segmentHeadViewDequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
 }
 
-- (void)registerClass:(nullable Class)cellClass forCellWithReuseIdentifier:(NSString *_Nullable)identifier{
+- (void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier{
     [self.jjSegmentHead registerClass:cellClass forCellWithReuseIdentifier:identifier];
 }
 

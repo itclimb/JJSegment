@@ -32,11 +32,12 @@
 @property(nonatomic, copy) UIColor *lineColor;
 
 - (void)setSelectItemWithIndex:(NSInteger)index;
+
 - (void)reloadData;
 
 - (UICollectionViewCell *)segmentHeadViewDequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;
 
-- (void)registerClass:(nullable Class)cellClass forCellWithReuseIdentifier:(NSString *_Nullable)identifier;
+- (void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier;
 
 @end
 

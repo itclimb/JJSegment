@@ -48,7 +48,7 @@
 
 - (UICollectionViewCell *)JJSegmentView:(JJSegmentView *)segmentView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index{
     
-    JJSegmentHeadViewCell *cell = (JJSegmentHeadViewCell *)[segmentView segmentViewDequeueReusableCellWithReuseIdentifier:@"jjSegmentCell" forIndexPath:indexPath];
+    JJSegmentHeadViewCell *cell = (JJSegmentHeadViewCell *)[segmentView dequeueReusableCellWithReuseIdentifier:@"jjSegmentCell" forIndexPath:indexPath];
 
     cell.titleLabel.text = self.titleDatas[indexPath.row];
 

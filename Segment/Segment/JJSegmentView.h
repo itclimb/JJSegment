@@ -47,8 +47,8 @@
 
 - (instancetype)initWithFrame:(CGRect)frame andDelegate:(id)delegate withTitleDatas:(NSArray *)titleDatas;
 
-- (UICollectionViewCell *)segmentViewDequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;
+- (UICollectionViewCell *)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;
 
-- (void)registerClass:(nullable Class)cellClass forCellWithReuseIdentifier:(NSString *_Nullable)identifier;
+- (void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier;
 
 @end

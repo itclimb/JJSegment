@@ -46,7 +46,7 @@
     return self;
 }
 
-- (void)registerClass:(nullable Class)cellClass forCellWithReuseIdentifier:(NSString *_Nullable)identifier{
+- (void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier{
     [self.collectV registerClass:cellClass forCellWithReuseIdentifier:identifier];
 }
 
@@ -63,7 +63,6 @@
 }
 
 - (UICollectionViewCell *)segmentHeadViewDequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath{
-    
     return [self.collectV dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
 }
 
