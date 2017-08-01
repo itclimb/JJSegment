@@ -5,4 +5,4 @@
 可以自定义标签栏item,首先需要JJSegmentView注册自定义的item,和UICollectionView注册类似
 #### 实现的效果 ####
 
-![](https://github.com/itclimb/Segment/raw/master/Segment/show.png)
+![](https://github.com/itclimb/Segment/blob/master/Segment/show.png)
