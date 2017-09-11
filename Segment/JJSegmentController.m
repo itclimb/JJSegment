@@ -26,7 +26,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    NSArray *titleDatas = @[@"推荐视频",@"热点",@"直播",@"阿里巴巴",@"今日头条",@"腾讯视频"];
+    NSArray *titleDatas = @[@"推荐视频",@"热点",@"直播"];//@"阿里巴巴",@"今日头条",@"腾讯视频"];
     self.titleDatas = titleDatas;
     JJSegmentView *segmentView = [[JJSegmentView alloc] initWithFrame:CGRectZero andDelegate:self withTitleDatas:titleDatas];
     
@@ -42,16 +42,16 @@
 
 #pragma mark - JJSegmentViewDelegate
 
-- (UIViewController *)superViewController{    
+- (UIViewController *)superViewController{
     return self;
 }
 
 - (UICollectionViewCell *)JJSegmentView:(JJSegmentView *)segmentView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index{
     
     JJSegmentHeadViewCell *cell = (JJSegmentHeadViewCell *)[segmentView dequeueReusableCellWithReuseIdentifier:@"jjSegmentCell" forIndexPath:indexPath];
-
+    
     cell.titleLabel.text = self.titleDatas[indexPath.row];
-
+    
     if (index == indexPath.item) {
         cell.line.backgroundColor = [UIColor orangeColor];
         cell.titleLabel.textColor = [UIColor orangeColor];
@@ -70,15 +70,21 @@
 
 - (UIViewController *)JJSegmentView:(JJSegmentView *)segmentView subViewControllerWithIndex:(NSInteger)index{
     switch (index) {
-
-        case 0:
+            
+            case 0:
         {
             JJSegmentBaseController *vc = [[JJSegmentBaseController alloc] init];
             vc.index = [NSString stringWithFormat:@"第%ld页",index];
             return vc;
         }
             break;
-
+            
+//            case 1:
+//        {
+//            UIViewController *vc = [[UIViewController alloc] init];
+//            return vc;
+//        }
+//            break;
         default:
         {
             JJSegmentBaseController *vc = [[JJSegmentBaseController alloc] init];

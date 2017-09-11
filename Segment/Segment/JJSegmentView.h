@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 @class JJSegmentView;
 
+extern CGFloat segmentHeadViewHeight;
+extern CGFloat segmentHeadTextFont;
+
 @protocol JJSegmentViewDelegate <NSObject>
 
 @required
@@ -27,6 +30,7 @@
 
 
 @interface JJSegmentView : UIView
+
 //  代理
 @property(nonatomic, weak) id<JJSegmentViewDelegate> delegate;
 

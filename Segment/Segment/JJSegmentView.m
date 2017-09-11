@@ -10,8 +10,8 @@
 #import "JJSegmentHeadView.h"
 #import "Masonry.h"
 
-#define kSegmentHeadViewHeight 40
-#define kSegmentHeadTextFont 17
+CGFloat segmentHeadViewHeight = 40;
+CGFloat segmentHeadTextFont = 17;
 
 @interface JJSegmentView()<JJSegmentHeadViewDelegate,UIScrollViewDelegate>
 //  标签栏
@@ -62,7 +62,7 @@
     [self addSubview:self.jjSegmentHead];
     [self.jjSegmentHead mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.top.trailing.mas_equalTo(self);
-        make.height.mas_equalTo(kSegmentHeadViewHeight);
+        make.height.mas_equalTo(segmentHeadViewHeight);
     }];
     self.jjSegmentHead.delegate = self;
     
@@ -135,17 +135,17 @@
 - (CGSize)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView itemSizeWithIndex:(NSInteger)index{
     CGFloat total = 0;
     for (NSString *subStr in self.titleDatas) {
-        UIFont *subFont = [UIFont systemFontOfSize:kSegmentHeadTextFont];
+        UIFont *subFont = [UIFont systemFontOfSize:segmentHeadTextFont];
         CGSize subSize = [subStr sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:subFont, NSFontAttributeName, nil]];
         total += (subSize.width + 25);
     }
     if (total < [UIScreen mainScreen].bounds.size.width) {
-        return CGSizeMake(ScreenWidth / self.titleDatas.count, kSegmentHeadViewHeight);
+        return CGSizeMake(ScreenWidth / self.titleDatas.count, segmentHeadViewHeight);
     }else {
         NSString *str = [self.titleDatas objectAtIndex:index];
-        UIFont *font = [UIFont systemFontOfSize:kSegmentHeadTextFont];
+        UIFont *font = [UIFont systemFontOfSize:segmentHeadTextFont];
         CGSize size = [str sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil]];
-        return CGSizeMake(size.width + 25, kSegmentHeadViewHeight);
+        return CGSizeMake(size.width + 25, segmentHeadViewHeight);
     }
 }
 

@@ -15,9 +15,10 @@
 {
     if (self = [super initWithFrame:frame]) {
         
+        extern CGFloat segmentHeadTextFont;
         self.titleLabel = [[UILabel alloc] init];
         [self.contentView addSubview:self.titleLabel];
-        self.titleLabel.font = [UIFont systemFontOfSize:17];
+        self.titleLabel.font = [UIFont systemFontOfSize:segmentHeadTextFont];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
