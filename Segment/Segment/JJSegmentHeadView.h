@@ -20,14 +20,24 @@
 - (CGSize)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView itemSizeWithIndex:(NSInteger)index;
 //  选中标签
 - (void)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView itemSelectWithIndex:(NSInteger)index;
-//  标签栏的item
-- (UICollectionViewCell *)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index;
 
 @end
 
 @interface JJSegmentHeadView : UIView
 
+/**
+ 代理
+ */
 @property(nonatomic, weak) id<JJSegmentHeadViewDelegate> delegate;
+
+/**
+ 初始化方法
+
+ @param frame headView的尺寸
+ @param size 标签字体大小
+ @return headView
+ */
+- (instancetype)initWithFrame:(CGRect)frame andTitleDatas:(NSArray *)titleDatas fontOfSize:(CGFloat)size;
 
 /**
  选中标签栏的某个cell
@@ -40,23 +50,6 @@
  重新加载
  */
 - (void)reloadData;
-
-/**
- 复用cell
-
- @param identifier 复用标识
- @param indexPath 复用索引
- @return cell
- */
-- (UICollectionViewCell *)segmentHeadViewDequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;
-
-/**
- 注册
-
- @param cellClass 注册类
- @param identifier 注册标识
- */
-- (void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier;
 
 @end
 

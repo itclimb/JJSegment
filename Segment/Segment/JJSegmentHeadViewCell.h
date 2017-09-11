@@ -14,5 +14,7 @@
 @property(nonatomic, strong) UILabel *titleLabel;
 //  底部直线
 @property(nonatomic, strong) UIView *line;
+//  标题字体大小
+@property(nonatomic, assign) CGFloat fontSize;
 
 @end

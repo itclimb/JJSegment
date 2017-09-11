@@ -15,29 +15,33 @@
 {
     if (self = [super initWithFrame:frame]) {
         
-        extern CGFloat segmentHeadTextFont;
         self.titleLabel = [[UILabel alloc] init];
         [self.contentView addSubview:self.titleLabel];
-        self.titleLabel.font = [UIFont systemFontOfSize:segmentHeadTextFont];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
-        
-        [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.mas_equalTo(self.contentView);
-            make.top.mas_equalTo(self.contentView);
-            make.bottom.mas_equalTo(self.contentView).offset(-4);
-        }];
         
         self.line = [[UIView alloc] init];
         [self.contentView addSubview:self.line];
-        
-        [self.line mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.titleLabel.mas_bottom);
-            make.leading.trailing.mas_equalTo(self.titleLabel);
-            make.height.mas_equalTo(2);
-        }];
     }
     
     return self;
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    
+    self.titleLabel.font = [UIFont systemFontOfSize:self.fontSize];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.contentView);
+        make.top.mas_equalTo(self.contentView);
+        make.bottom.mas_equalTo(self.contentView).offset(-4);
+    }];
+    
+    [self.line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.titleLabel.mas_bottom);
+        make.leading.trailing.mas_equalTo(self.titleLabel);
+        make.height.mas_equalTo(2);
+    }];
+
 }
 
 @end

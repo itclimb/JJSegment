@@ -28,7 +28,6 @@
 		3F5B7D7F1EE7ADAE00F9B21C /* JJSegmentHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B7D7B1EE7ADAE00F9B21C /* JJSegmentHeadView.m */; };
 		3F5B7D801EE7ADAE00F9B21C /* JJSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B7D7D1EE7ADAE00F9B21C /* JJSegmentView.m */; };
 		3F5B7D831EE7AF2200F9B21C /* JJSegmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B7D821EE7AF2200F9B21C /* JJSegmentController.m */; };
-		3FD9B2541F62880F006183D8 /* JJSegmentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD9B2531F62880F006183D8 /* JJSegmentManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,8 +75,6 @@
 		3F5B7D7D1EE7ADAE00F9B21C /* JJSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSegmentView.m; sourceTree = "<group>"; };
 		3F5B7D811EE7AF2200F9B21C /* JJSegmentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSegmentController.h; sourceTree = "<group>"; };
 		3F5B7D821EE7AF2200F9B21C /* JJSegmentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSegmentController.m; sourceTree = "<group>"; };
-		3FD9B2521F62880F006183D8 /* JJSegmentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSegmentManager.h; sourceTree = "<group>"; };
-		3FD9B2531F62880F006183D8 /* JJSegmentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSegmentManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,8 +184,6 @@
 		3F5B7D771EE7ADAE00F9B21C /* Segment */ = {
 			isa = PBXGroup;
 			children = (
-				3FD9B2521F62880F006183D8 /* JJSegmentManager.h */,
-				3FD9B2531F62880F006183D8 /* JJSegmentManager.m */,
 				3F5B7D7C1EE7ADAE00F9B21C /* JJSegmentView.h */,
 				3F5B7D7D1EE7ADAE00F9B21C /* JJSegmentView.m */,
 				3F5B7D7A1EE7ADAE00F9B21C /* JJSegmentHeadView.h */,
@@ -283,7 +278,6 @@
 				3F2AAD2F1F302C92006A14FD /* MASLayoutConstraint.m in Sources */,
 				3F16E8ED1F2F2797005B5378 /* JJSegmentHeadViewCell.m in Sources */,
 				3F5B7D7E1EE7ADAE00F9B21C /* JJSegmentBaseController.m in Sources */,
-				3FD9B2541F62880F006183D8 /* JJSegmentManager.m in Sources */,
 				3F2AAD331F302C92006A14FD /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				3F5B7D621EE7AD5900F9B21C /* main.m in Sources */,
 				3F2AAD321F302C92006A14FD /* NSArray+MASAdditions.m in Sources */,

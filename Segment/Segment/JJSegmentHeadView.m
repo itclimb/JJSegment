@@ -8,22 +8,27 @@
 
 #import "JJSegmentHeadView.h"
 #import "Masonry.h"
+#import "JJSegmentHeadViewCell.h"
 
 @interface JJSegmentHeadView ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,UICollectionViewDelegate>
 //  子视图
 @property(nonatomic, strong) UICollectionView *collectV;
 //  选中标签索引
 @property(nonatomic, assign) NSInteger selectIndex;
+//  标签字体大小
+@property(nonatomic, assign) CGFloat fontSize;
+//  标签栏数据
+@property(nonatomic, strong) NSArray *titleDatas;
 
 @end
 
 @implementation JJSegmentHeadView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame andTitleDatas:(NSArray *)titleDatas fontOfSize:(CGFloat)size{
     self = [super initWithFrame:frame];
     if (self) {
-        
+        self.fontSize = size;
+        self.titleDatas = titleDatas;
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         
@@ -40,19 +45,9 @@
         [self.collectV mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(self);
         }];
+        [self.collectV registerClass:[JJSegmentHeadViewCell class] forCellWithReuseIdentifier:@"jjSegmentCell"];
     }
     return self;
-}
-
-//MARK: - 注册
-- (void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier{
-    [self.collectV registerClass:cellClass forCellWithReuseIdentifier:identifier];
-}
-
-//MARK: - 复用cell
-- (UICollectionViewCell *)segmentHeadViewDequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath{
-    
-    return [self.collectV dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
 }
 
 #pragma mark -  UICollectionViewDataSource
@@ -64,13 +59,29 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    return [self.delegate JJSegmentHeadView:self cellForItemAtIndexPath:indexPath withSelectIndex:self.selectIndex];
+    JJSegmentHeadViewCell *cell = (JJSegmentHeadViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"jjSegmentCell" forIndexPath:indexPath];
+    cell.titleLabel.text = self.titleDatas[indexPath.row];
+    cell.fontSize = self.fontSize;
+    if (self.selectIndex == indexPath.item) {
+        cell.line.backgroundColor = [UIColor orangeColor];
+        cell.titleLabel.textColor = [UIColor orangeColor];
+        [UIView animateWithDuration:0.3 animations:^{
+            cell.line.transform = CGAffineTransformMakeScale(1.2, 1.2);
+            cell.titleLabel.transform = CGAffineTransformMakeScale(1.2, 1.2);
+        }];
+    }else {
+        cell.line.backgroundColor = [UIColor clearColor];
+        cell.titleLabel.textColor = [UIColor blackColor];
+        cell.line.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        cell.titleLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
+    }
+    return cell;
 }
 
 #pragma mark -  UICollectionViewDelegateFlowLayout
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-        
+    
     return 0;
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {

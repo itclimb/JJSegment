@@ -10,9 +10,6 @@
 #import "JJSegmentHeadView.h"
 #import "Masonry.h"
 
-CGFloat segmentHeadViewHeight = 40;
-CGFloat segmentHeadTextFont = 17;
-
 @interface JJSegmentView()<JJSegmentHeadViewDelegate,UIScrollViewDelegate>
 //  标签栏
 @property(nonatomic, strong) JJSegmentHeadView *jjSegmentHead;
@@ -22,15 +19,20 @@ CGFloat segmentHeadTextFont = 17;
 @property(nonatomic, strong) UIView *container;
 //  标签栏数据
 @property(nonatomic, strong) NSArray *titleDatas;
-
+//  标签栏高度
+@property(nonatomic, assign) CGFloat headHeight;
+//  标签栏字体
+@property(nonatomic, assign) CGFloat size;
 @end
 
 @implementation JJSegmentView
 
-- (instancetype)initWithFrame:(CGRect)frame andDelegate:(id)delegate withTitleDatas:(NSArray *)titleDatas
+- (instancetype)initWithFrame:(CGRect)frame andDelegate:(id)delegate withTitleDatas:(NSArray *)titleDatas headHeight:(CGFloat)headHeight FontOfSize:(CGFloat)size
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.headHeight = headHeight;
+        self.size = size;
         self.delegate = delegate;
         self.titleDatas = titleDatas;
     }
@@ -58,11 +60,11 @@ CGFloat segmentHeadTextFont = 17;
 //MARK: - 创建子控件
 - (void)createUI{
     
-    self.jjSegmentHead = [[JJSegmentHeadView alloc] init];
+    self.jjSegmentHead = [[JJSegmentHeadView alloc] initWithFrame:CGRectZero andTitleDatas:self.titleDatas fontOfSize:self.size];
     [self addSubview:self.jjSegmentHead];
     [self.jjSegmentHead mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.top.trailing.mas_equalTo(self);
-        make.height.mas_equalTo(segmentHeadViewHeight);
+        make.height.mas_equalTo(self.headHeight?:40);
     }];
     self.jjSegmentHead.delegate = self;
     
@@ -111,14 +113,6 @@ CGFloat segmentHeadTextFont = 17;
     }
 }
 
-- (UICollectionViewCell *)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath{
-    return [self.jjSegmentHead segmentHeadViewDequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-}
-
-- (void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier{
-    [self.jjSegmentHead registerClass:cellClass forCellWithReuseIdentifier:identifier];
-}
-
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
@@ -135,17 +129,17 @@ CGFloat segmentHeadTextFont = 17;
 - (CGSize)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView itemSizeWithIndex:(NSInteger)index{
     CGFloat total = 0;
     for (NSString *subStr in self.titleDatas) {
-        UIFont *subFont = [UIFont systemFontOfSize:segmentHeadTextFont];
+        UIFont *subFont = [UIFont systemFontOfSize:self.size?:17.0];
         CGSize subSize = [subStr sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:subFont, NSFontAttributeName, nil]];
         total += (subSize.width + 25);
     }
     if (total < [UIScreen mainScreen].bounds.size.width) {
-        return CGSizeMake(ScreenWidth / self.titleDatas.count, segmentHeadViewHeight);
+        return CGSizeMake(ScreenWidth / self.titleDatas.count, self.headHeight?:40);
     }else {
         NSString *str = [self.titleDatas objectAtIndex:index];
-        UIFont *font = [UIFont systemFontOfSize:segmentHeadTextFont];
+        UIFont *font = [UIFont systemFontOfSize:self.size?:17.0];
         CGSize size = [str sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil]];
-        return CGSizeMake(size.width + 25, segmentHeadViewHeight);
+        return CGSizeMake(size.width + 25, self.headHeight?:40);
     }
 }
 
@@ -153,11 +147,6 @@ CGFloat segmentHeadTextFont = 17;
     
     [self.scrollBg setContentOffset:CGPointMake(ScreenWidth * index, 0) animated:NO];
     [self.delegate JJSegmentView:self itemSelectWithIndex:index];
-}
-
-- (UICollectionViewCell *)JJSegmentHeadView:(UICollectionView *)segmentHeadView cellForItemAtIndexPath:(NSIndexPath *)indexPath withSelectIndex:(NSInteger)index{
-    
-    return [self.delegate JJSegmentView:self cellForItemAtIndexPath:indexPath withSelectIndex:index];
 }
 
 @end
