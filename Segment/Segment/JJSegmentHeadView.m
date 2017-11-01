@@ -17,6 +17,8 @@
 @property(nonatomic, assign) NSInteger selectIndex;
 //  标签字体大小
 @property(nonatomic, assign) CGFloat fontSize;
+//  选中标签颜色
+@property(nonatomic, strong) UIColor *selectColor;
 //  标签栏数据
 @property(nonatomic, strong) NSArray *titleDatas;
 
@@ -24,10 +26,11 @@
 
 @implementation JJSegmentHeadView
 
-- (instancetype)initWithFrame:(CGRect)frame andTitleDatas:(NSArray *)titleDatas fontOfSize:(CGFloat)size{
+- (instancetype)initWithFrame:(CGRect)frame andTitleDatas:(NSArray *)titleDatas fontOfSize:(CGFloat)size selectColor:(UIColor *)selectColor{
     self = [super initWithFrame:frame];
     if (self) {
         self.fontSize = size;
+        self.selectColor = selectColor;
         self.titleDatas = titleDatas;
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -63,8 +66,8 @@
     cell.titleLabel.text = self.titleDatas[indexPath.row];
     cell.fontSize = self.fontSize;
     if (self.selectIndex == indexPath.item) {
-        cell.line.backgroundColor = [UIColor orangeColor];
-        cell.titleLabel.textColor = [UIColor orangeColor];
+        cell.line.backgroundColor = self.selectColor?:[UIColor orangeColor];
+        cell.titleLabel.textColor = self.selectColor?:[UIColor orangeColor];
         [UIView animateWithDuration:0.3 animations:^{
             cell.line.transform = CGAffineTransformMakeScale(1.2, 1.2);
             cell.titleLabel.transform = CGAffineTransformMakeScale(1.2, 1.2);
@@ -104,8 +107,8 @@
         return;
     }
     [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-    [self.collectV reloadData];
     self.selectIndex = indexPath.row;
+    [self.collectV reloadData];
     [self.delegate JJSegmentHeadView:self itemSelectWithIndex:indexPath.row];
 }
 

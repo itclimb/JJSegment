@@ -32,7 +32,8 @@
                                                           andDelegate:self
                                                        withTitleDatas:titleDatas
                                                            headHeight:40
-                                                           FontOfSize:17.0];
+                                                           FontOfSize:17.0
+                                                          SelectColor:nil];
     
     [self.view addSubview:segmentView];
     [segmentView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -54,14 +55,14 @@
         case 0:
         {
             JJSegmentBaseController *vc = [[JJSegmentBaseController alloc] init];
-            vc.index = [NSString stringWithFormat:@"第%ld页",index];
+            vc.index = [NSString stringWithFormat:@"第%ld页",(long)index];
             return vc;
             break;
         }
         default:
         {
             JJSegmentBaseController *vc = [[JJSegmentBaseController alloc] init];
-            vc.index = [NSString stringWithFormat:@"第%ld页",index];
+            vc.index = [NSString stringWithFormat:@"第%ld页",(long)index];
             return vc;
             break;
         }

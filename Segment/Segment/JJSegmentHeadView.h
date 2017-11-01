@@ -35,9 +35,10 @@
 
  @param frame headView的尺寸
  @param size 标签字体大小
+ @param selectColor 选中标签颜色
  @return headView
  */
-- (instancetype)initWithFrame:(CGRect)frame andTitleDatas:(NSArray *)titleDatas fontOfSize:(CGFloat)size;
+- (instancetype)initWithFrame:(CGRect)frame andTitleDatas:(NSArray *)titleDatas fontOfSize:(CGFloat)size selectColor:(UIColor *)selectColor;
 
 /**
  选中标签栏的某个cell

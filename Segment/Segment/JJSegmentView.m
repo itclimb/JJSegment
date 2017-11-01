@@ -23,15 +23,19 @@
 @property(nonatomic, assign) CGFloat headHeight;
 //  标签栏字体
 @property(nonatomic, assign) CGFloat size;
+//  选中标签颜色
+@property(nonatomic, strong) UIColor *selectColor;
+
 @end
 
 @implementation JJSegmentView
 
-- (instancetype)initWithFrame:(CGRect)frame andDelegate:(id)delegate withTitleDatas:(NSArray *)titleDatas headHeight:(CGFloat)headHeight FontOfSize:(CGFloat)size
+- (instancetype)initWithFrame:(CGRect)frame andDelegate:(id)delegate withTitleDatas:(NSArray *)titleDatas headHeight:(CGFloat)headHeight FontOfSize:(CGFloat)size SelectColor:(UIColor *)selectColor
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.headHeight = headHeight;
+        self.selectColor = selectColor;
         self.size = size;
         self.delegate = delegate;
         self.titleDatas = titleDatas;
@@ -60,7 +64,7 @@
 //MARK: - 创建子控件
 - (void)createUI{
     
-    self.jjSegmentHead = [[JJSegmentHeadView alloc] initWithFrame:CGRectZero andTitleDatas:self.titleDatas fontOfSize:self.size];
+    self.jjSegmentHead = [[JJSegmentHeadView alloc] initWithFrame:CGRectZero andTitleDatas:self.titleDatas fontOfSize:self.size selectColor:self.selectColor];
     [self addSubview:self.jjSegmentHead];
     [self.jjSegmentHead mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.top.trailing.mas_equalTo(self);
