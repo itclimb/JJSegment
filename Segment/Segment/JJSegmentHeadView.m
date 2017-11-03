@@ -43,7 +43,7 @@
         
         collectionView.backgroundColor = [UIColor whiteColor];
         collectionView.showsHorizontalScrollIndicator = NO;
-        
+    
         [self addSubview:collectionView];
         [self.collectV mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(self);
@@ -78,6 +78,9 @@
         cell.line.transform = CGAffineTransformMakeScale(1.0, 1.0);
         cell.titleLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
     }
+    
+    CGRect cellRect = [collectionView convertRect:cell.frame toView:collectionView];
+    
     return cell;
 }
 
@@ -107,6 +110,11 @@
         return;
     }
     [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    //    [collectionView setContentOffset:CGPointMake(indexPath.row * collectionView.bounds.size.width, 0) animated:YES];
+    
+    UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    CGRect cellRect = [collectionView convertRect:cell.frame toView:collectionView];
+    
     self.selectIndex = indexPath.row;
     [self.collectV reloadData];
     [self.delegate JJSegmentHeadView:self itemSelectWithIndex:indexPath.row];

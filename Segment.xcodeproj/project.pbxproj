@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F037B481FA99B6900F86CBE /* JJTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F037B471FA99B6900F86CBE /* JJTabBarViewController.m */; };
 		3F16E8ED1F2F2797005B5378 /* JJSegmentHeadViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F16E8EC1F2F2797005B5378 /* JJSegmentHeadViewCell.m */; };
 		3F2AAD2B1F302C92006A14FD /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F2AAD111F302C92006A14FD /* Info.plist */; };
 		3F2AAD2C1F302C92006A14FD /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2AAD131F302C92006A14FD /* MASCompositeConstraint.m */; };
@@ -31,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F037B461FA99B6900F86CBE /* JJTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJTabBarViewController.h; sourceTree = "<group>"; };
+		3F037B471FA99B6900F86CBE /* JJTabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJTabBarViewController.m; sourceTree = "<group>"; };
 		3F16E8EB1F2F2797005B5378 /* JJSegmentHeadViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJSegmentHeadViewCell.h; sourceTree = "<group>"; };
 		3F16E8EC1F2F2797005B5378 /* JJSegmentHeadViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJSegmentHeadViewCell.m; sourceTree = "<group>"; };
 		3F2AAD111F302C92006A14FD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,6 +98,8 @@
 				3F5B7D821EE7AF2200F9B21C /* JJSegmentController.m */,
 				3F6279AC1FA96CF600A18959 /* JJSegmentBaseController.h */,
 				3F6279AD1FA96CF600A18959 /* JJSegmentBaseController.m */,
+				3F037B461FA99B6900F86CBE /* JJTabBarViewController.h */,
+				3F037B471FA99B6900F86CBE /* JJTabBarViewController.m */,
 			);
 			name = Test;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 				3F2AAD2C1F302C92006A14FD /* MASCompositeConstraint.m in Sources */,
 				3F5B7D651EE7AD5900F9B21C /* AppDelegate.m in Sources */,
 				3F2AAD2F1F302C92006A14FD /* MASLayoutConstraint.m in Sources */,
+				3F037B481FA99B6900F86CBE /* JJTabBarViewController.m in Sources */,
 				3F16E8ED1F2F2797005B5378 /* JJSegmentHeadViewCell.m in Sources */,
 				3F2AAD331F302C92006A14FD /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				3F5B7D621EE7AD5900F9B21C /* main.m in Sources */,

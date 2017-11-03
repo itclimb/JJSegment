@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "JJSegmentController.h"
+#import "JJTabBarViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,10 +18,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[JJSegmentController alloc] init]];
-    self.window.rootViewController = nav;
+    JJTabBarViewController *tabVc = [[JJTabBarViewController alloc] init];
+    self.window.rootViewController = tabVc;
     [self.window makeKeyAndVisible];
-    
     return YES;
 }
 
