@@ -34,12 +34,18 @@
  初始化方法
 
  @param frame headView的尺寸
- @param size 标签字体大小
- @param selectColor 选中标签颜色
+ @param fontSize 标签字体大小
  @return headView
  */
-- (instancetype)initWithFrame:(CGRect)frame andTitleDatas:(NSArray *)titleDatas fontOfSize:(CGFloat)size selectColor:(UIColor *)selectColor;
-
+- (instancetype)initWithFrame:(CGRect)frame
+                andTitleDatas:(NSArray *)titleDatas
+                   fontOfSize:(CGFloat)fontSize
+                 bgNomalColor:(UIColor *)bgNomalColor
+                bgSelectColor:(UIColor *)bgSelectColor
+              titleNomalColor:(UIColor *)titleNomalColor
+             titleSelectColor:(UIColor *)titleSelectColor
+               lineNomalColor:(UIColor *)lineNomalColor
+              lineSelectColor:(UIColor *)lineSelectColor;
 /**
  选中标签栏的某个cell
 

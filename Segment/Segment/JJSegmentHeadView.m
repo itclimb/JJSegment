@@ -17,20 +17,35 @@
 @property(nonatomic, assign) NSInteger selectIndex;
 //  标签字体大小
 @property(nonatomic, assign) CGFloat fontSize;
-//  选中标签颜色
-@property(nonatomic, strong) UIColor *selectColor;
 //  标签栏数据
 @property(nonatomic, strong) NSArray *titleDatas;
+//  标签栏背景未选中色
+@property(nonatomic, strong) UIColor *bgNomalColor;
+//  标签栏背景选中色
+@property(nonatomic, strong) UIColor *bgSelectColor;
+//  标签栏字体未选中色
+@property(nonatomic, strong) UIColor *titleNomalColor;
+//  标签栏字体选中色
+@property(nonatomic, strong) UIColor *titleSelectColor;
+//  标签栏下划线未选中色
+@property(nonatomic, strong) UIColor *lineNomalColor;
+//  标签栏下划线选中色
+@property(nonatomic, strong) UIColor *lineSelectColor;
 
 @end
 
 @implementation JJSegmentHeadView
 
-- (instancetype)initWithFrame:(CGRect)frame andTitleDatas:(NSArray *)titleDatas fontOfSize:(CGFloat)size selectColor:(UIColor *)selectColor{
+- (instancetype)initWithFrame:(CGRect)frame andTitleDatas:(NSArray *)titleDatas fontOfSize:(CGFloat)fontSize bgNomalColor:(UIColor *)bgNomalColor bgSelectColor:(UIColor *)bgSelectColor titleNomalColor:(UIColor *)titleNomalColor titleSelectColor:(UIColor *)titleSelectColor lineNomalColor:(UIColor *)lineNomalColor lineSelectColor:(UIColor *)lineSelectColor{
     self = [super initWithFrame:frame];
     if (self) {
-        self.fontSize = size;
-        self.selectColor = selectColor;
+        self.bgNomalColor = bgNomalColor;
+        self.bgSelectColor = bgSelectColor;
+        self.titleNomalColor = titleNomalColor;
+        self.titleSelectColor = titleSelectColor;
+        self.lineNomalColor = lineNomalColor;
+        self.lineSelectColor = lineSelectColor;
+        self.fontSize = fontSize;
         self.titleDatas = titleDatas;
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -43,7 +58,7 @@
         
         collectionView.backgroundColor = [UIColor whiteColor];
         collectionView.showsHorizontalScrollIndicator = NO;
-    
+        
         [self addSubview:collectionView];
         [self.collectV mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(self);
@@ -66,21 +81,24 @@
     cell.titleLabel.text = self.titleDatas[indexPath.row];
     cell.fontSize = self.fontSize;
     if (self.selectIndex == indexPath.item) {
-        cell.line.backgroundColor = self.selectColor?:[UIColor orangeColor];
-        cell.titleLabel.textColor = self.selectColor?:[UIColor orangeColor];
+        cell.line.backgroundColor = self.lineSelectColor;
+        cell.titleLabel.textColor = self.titleSelectColor;
+        cell.contentView.backgroundColor = self.bgSelectColor;
+        /**
         [UIView animateWithDuration:0.3 animations:^{
             cell.line.transform = CGAffineTransformMakeScale(1.2, 1.2);
             cell.titleLabel.transform = CGAffineTransformMakeScale(1.2, 1.2);
         }];
+         */
     }else {
-        cell.line.backgroundColor = [UIColor clearColor];
-        cell.titleLabel.textColor = [UIColor blackColor];
+        cell.line.backgroundColor = self.lineNomalColor;
+        cell.titleLabel.textColor = self.titleNomalColor;
+        cell.contentView.backgroundColor = self.bgNomalColor;
+        /**
         cell.line.transform = CGAffineTransformMakeScale(1.0, 1.0);
         cell.titleLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
+         */
     }
-    
-    CGRect cellRect = [collectionView convertRect:cell.frame toView:collectionView];
-    
     return cell;
 }
 
@@ -110,13 +128,8 @@
         return;
     }
     [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-    //    [collectionView setContentOffset:CGPointMake(indexPath.row * collectionView.bounds.size.width, 0) animated:YES];
-    
-    UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    CGRect cellRect = [collectionView convertRect:cell.frame toView:collectionView];
-    
-    self.selectIndex = indexPath.row;
     [self.collectV reloadData];
+    self.selectIndex = indexPath.row;
     [self.delegate JJSegmentHeadView:self itemSelectWithIndex:indexPath.row];
 }
 

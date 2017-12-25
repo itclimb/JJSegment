@@ -33,13 +33,13 @@
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.contentView);
         make.top.mas_equalTo(self.contentView);
-        make.bottom.mas_equalTo(self.contentView).offset(-4);
+        make.bottom.mas_equalTo(self.contentView);
     }];
     
     [self.line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.titleLabel.mas_bottom);
-        make.leading.trailing.mas_equalTo(self.titleLabel);
+        make.leading.trailing.mas_equalTo(self.contentView);
         make.height.mas_equalTo(2);
+        make.bottom.mas_equalTo(self.contentView);
     }];
 
 }

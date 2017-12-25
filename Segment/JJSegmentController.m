@@ -28,12 +28,7 @@
     
     NSArray *titleDatas = @[@"推荐视频",@"热点",@"直播",@"阿里巴巴",@"今日头条",@"腾讯视频"];
     self.titleDatas = titleDatas;
-    JJSegmentView *segmentView = [[JJSegmentView alloc] initWithFrame:CGRectZero
-                                                          andDelegate:self
-                                                       withTitleDatas:titleDatas
-                                                           headHeight:40
-                                                           FontOfSize:17.0
-                                                          SelectColor:nil];
+    JJSegmentView *segmentView = [[JJSegmentView alloc] initWithFrame:CGRectZero andDelegate:self titleDatas:titleDatas headHeight:40.0 fontOfSize:17.0 itemNomalColor:[UIColor blackColor] itemSelectColor:[UIColor blueColor]];
     
     [self.view addSubview:segmentView];
     [segmentView mas_makeConstraints:^(MASConstraintMaker *make) {

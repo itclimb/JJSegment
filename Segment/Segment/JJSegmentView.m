@@ -22,26 +22,77 @@
 //  标签栏高度
 @property(nonatomic, assign) CGFloat headHeight;
 //  标签栏字体
-@property(nonatomic, assign) CGFloat size;
-//  选中标签颜色
-@property(nonatomic, strong) UIColor *selectColor;
+@property(nonatomic, assign) CGFloat fontSize;
+//  标签栏未选中色
+@property(nonatomic, strong) UIColor *headBgNomalColor;
+//  标签栏选中色
+@property(nonatomic, strong) UIColor *headBgSelectColor;
+//  标签栏字体未选中色
+@property(nonatomic, strong) UIColor *headTitleNomalColor;
+//  标签栏字体选中色
+@property(nonatomic, strong) UIColor *headTitleSelectColor;
+//  标签栏下划线未选中色
+@property(nonatomic, strong) UIColor *headLineNomalColor;
+//  标签栏下划线选中色
+@property(nonatomic, strong) UIColor *headLineSelectColor;
+
 
 @end
 
 @implementation JJSegmentView
 
-- (instancetype)initWithFrame:(CGRect)frame andDelegate:(id)delegate withTitleDatas:(NSArray *)titleDatas headHeight:(CGFloat)headHeight FontOfSize:(CGFloat)size SelectColor:(UIColor *)selectColor
+- (instancetype)initWithFrame:(CGRect)frame
+                  andDelegate:(id)delegate
+                   titleDatas:(NSArray *)titleDatas
+                   headHeight:(CGFloat)headHeight
+                   fontOfSize:(CGFloat)fontSize
+               itemNomalColor:(UIColor *)nomalColor
+              itemSelectColor:(UIColor *)selectColor
+{
+    if ([self initWithFrame:frame
+                andDelegate:delegate
+                 titleDatas:titleDatas
+                 headHeight:headHeight
+                 fontOfSize:fontSize
+           headBgNomalColor:[UIColor whiteColor]
+          headBgSelectColor:[UIColor whiteColor]
+        headTitleNomalColor:nomalColor
+       headTitleSelectColor:selectColor
+         headLineNomalColor:[UIColor clearColor]
+        headLineSelectColor:selectColor]) {
+        //do nothing
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+                  andDelegate:(id)delegate
+                   titleDatas:(NSArray *)titleDatas
+                   headHeight:(CGFloat)headHeight
+                   fontOfSize:(CGFloat)fontSize
+             headBgNomalColor:(UIColor *)headBgNomalColor
+            headBgSelectColor:(UIColor *)headBgSelectColor
+          headTitleNomalColor:(UIColor *)headTitleNomalColor
+         headTitleSelectColor:(UIColor *)headTitleSelectColor
+           headLineNomalColor:(UIColor *)headLineNomalColor
+          headLineSelectColor:(UIColor *)headLineSelectColor
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.headHeight = headHeight;
-        self.selectColor = selectColor;
-        self.size = size;
+        self.fontSize = fontSize;
         self.delegate = delegate;
+        self.headBgNomalColor = headBgNomalColor;
+        self.headBgSelectColor = headBgSelectColor;
+        self.headTitleNomalColor = headTitleNomalColor;
+        self.headTitleSelectColor = headTitleSelectColor;
+        self.headLineNomalColor = headLineNomalColor;
+        self.headLineSelectColor = headLineSelectColor;
         self.titleDatas = titleDatas;
     }
     return self;
 }
+
 
 //MARK: - Property Set
 - (void)setTitleDatas:(NSArray *)titleDatas{
@@ -64,7 +115,7 @@
 //MARK: - 创建子控件
 - (void)createUI{
     
-    self.jjSegmentHead = [[JJSegmentHeadView alloc] initWithFrame:CGRectZero andTitleDatas:self.titleDatas fontOfSize:self.size selectColor:self.selectColor];
+    self.jjSegmentHead = [[JJSegmentHeadView alloc] initWithFrame:CGRectZero andTitleDatas:_titleDatas fontOfSize:self.fontSize bgNomalColor:self.headBgNomalColor bgSelectColor:self.headBgSelectColor titleNomalColor:self.headTitleNomalColor titleSelectColor:self.headTitleSelectColor lineNomalColor:self.headLineNomalColor lineSelectColor:self.headLineSelectColor];
     [self addSubview:self.jjSegmentHead];
     [self.jjSegmentHead mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.top.trailing.mas_equalTo(self);
@@ -133,7 +184,7 @@
 - (CGSize)JJSegmentHeadView:(JJSegmentHeadView *)segmentHeadView itemSizeWithIndex:(NSInteger)index{
     CGFloat total = 0;
     for (NSString *subStr in self.titleDatas) {
-        UIFont *subFont = [UIFont systemFontOfSize:self.size?:17.0];
+        UIFont *subFont = [UIFont systemFontOfSize:self.fontSize?:17.0];
         CGSize subSize = [subStr sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:subFont, NSFontAttributeName, nil]];
         total += (subSize.width + 25);
     }
@@ -141,7 +192,7 @@
         return CGSizeMake(ScreenWidth / self.titleDatas.count, self.headHeight?:40);
     }else {
         NSString *str = [self.titleDatas objectAtIndex:index];
-        UIFont *font = [UIFont systemFontOfSize:self.size?:17.0];
+        UIFont *font = [UIFont systemFontOfSize:self.fontSize?:17.0];
         CGSize size = [str sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil]];
         return CGSizeMake(size.width + 25, self.headHeight?:40);
     }
