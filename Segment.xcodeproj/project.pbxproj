@@ -230,7 +230,7 @@
 				TargetAttributes = {
 					3F5B7D5C1EE7AD5900F9B21C = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 22B4UKXY6S;
+						DevelopmentTeam = 93A3WCDBZD;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -401,7 +401,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 22B4UKXY6S;
+				DEVELOPMENT_TEAM = 93A3WCDBZD;
 				INFOPLIST_FILE = Segment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = itclimb.yuancheng.com.Segment;
@@ -413,7 +413,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 22B4UKXY6S;
+				DEVELOPMENT_TEAM = 93A3WCDBZD;
 				INFOPLIST_FILE = Segment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = itclimb.yuancheng.com.Segment;
